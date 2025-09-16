@@ -140,7 +140,7 @@ if selected_anaysis_type == 'Numeric Drivers of Churn':
 
     total_charges_tenure_col.plotly_chart(total_charges_tenure_scatter)
 
-    total_charges_tenure_note_col.text('There is a strong positive relationship between tenure and total charges, ' \
+    total_charges_tenure_note_col.markdown('There is a strong positive relationship between tenure and total charges, ' \
     'as expected. However, churners cluster more heavily in the lower-tenure, lower-total-charge region, indicating ' \
     'that newer customers with less accumulated spend are more prone to churn.')
 
@@ -163,7 +163,7 @@ elif selected_anaysis_type == 'Categorical Drivers of Churn':
 
     categorical1.plotly_chart(contract_bar)
 
-    categorical1.text('Customers on month-to-month contracts are far more likely to churn than those ' \
+    categorical1.markdown('Customers on month-to-month contracts are far more likely to churn than those ' \
     'on one-year or two-year contracts. Longer contracts appear to reduce churn, likely because they lock '
     'in commitment and possibly offer discounts.')
 
@@ -180,7 +180,7 @@ elif selected_anaysis_type == 'Categorical Drivers of Churn':
 
     categorical2.plotly_chart(payment_method_bar)
 
-    categorical2.text('Churn is highest among customers using electronic checks, while those paying by ' \
+    categorical2.markdown('Churn is highest among customers using electronic checks, while those paying by ' \
     'credit card or bank transfer (automatic) churn less. This may reflect both customer demographics and ' \
     'the convenience/reliability of automated payments.')
 
@@ -202,7 +202,7 @@ elif selected_anaysis_type == 'Categorical Drivers of Churn':
 
     categorical3.plotly_chart(paperless_billing_bar)
 
-    categorical3.text('Customers with paperless billing have noticeably higher churn than those receiving paper bills. ' \
+    categorical3.markdown('Customers with paperless billing have noticeably higher churn than those receiving paper bills. ' \
     'This might indicate differences in customer profiles: paperless billing users could be younger, more price-sensitive, '
     'or more likely to switch providers.')
 
@@ -220,7 +220,7 @@ elif selected_anaysis_type == 'Categorical Drivers of Churn':
 
     categorical4.plotly_chart(internet_service_bar)
 
-    categorical4.text('Churn is most pronounced among Fiber optic users, while DSL customers show lower churn, '
+    categorical4.markdown('Churn is most pronounced among Fiber optic users, while DSL customers show lower churn, '
     'and those without internet service churn the least. This suggests that fiber customers may have higher' \
     ' expectations for service or face more competitive alternatives.')
 
@@ -263,7 +263,7 @@ elif selected_anaysis_type == 'Service Engagement and Churn':
 
     services_count_line_col.plotly_chart(services_count_line)
 
-    services_count_note_col.text('Customers with fewer subscribed services are more likely to churn, ' \
+    services_count_note_col.markdown('Customers with fewer subscribed services are more likely to churn, ' \
     'with churn rates peaking among those with only one or two services. As the number of services ' \
     'increases, the churn rate steadily declines, suggesting that broader service engagement creates ' \
     'stronger customer loyalty and reduces the likelihood of leaving.')
@@ -317,7 +317,7 @@ elif selected_anaysis_type == 'Demographic Drivers of Churn':
 
     demographic_drivers_bar_col.plotly_chart(demographic_drivers_bar)
 
-    demographic_drivers_note_col.text('Demographic factors play an important role in churn behavior. ' \
+    demographic_drivers_note_col.markdown('Demographic factors play an important role in churn behavior. ' \
     'Senior citizens show the highest churn rate (41.7%), indicating they are more likely to leave. ' \
     'In contrast, customers with a partner (19.7%) or dependents (15.5%) are less likely to churn ' \
     'compared to those without. This suggests that customers with family responsibilities tend to be ' \
@@ -348,7 +348,7 @@ elif selected_anaysis_type == 'Correlations and Interactions':
 
     corr_column1.plotly_chart(heatmap)
 
-    corr_column1.text('The heatmap shows strong positive correlations between tenure and total charges (0.82), ' \
+    corr_column1.markdown('The heatmap shows strong positive correlations between tenure and total charges (0.82), ' \
     'as expected, since customers who stay longer accumulate higher charges. Monthly charges are moderately ' \
     'correlated with total charges (0.65) but less related to tenure (0.25). Importantly, churn flag is negatively ' \
     'correlated with tenure (-0.35), meaning longer-tenure customers are less likely to churn, while its correlation ' \
@@ -404,7 +404,7 @@ elif selected_anaysis_type == 'Correlations and Interactions':
 
     corr_column2.plotly_chart(fig_line)
 
-    corr_column2.text('Churn risk decreases sharply as customer tenure increases. Customers in their first ' \
+    corr_column2.markdown('Churn risk decreases sharply as customer tenure increases. Customers in their first ' \
     '6 months churn at over 50%, while those with 1–2 years of tenure churn around 30%. After 2 years, ' \
     'churn steadily declines, reaching under 10% for customers with more than 4 years of tenure. This highlights ' \
     'the importance of retention strategies in the early stages of the customer lifecycle, where churn risk is highest.')
@@ -487,7 +487,7 @@ if model_name == 'Logistic Regression':
     df_report = pd.DataFrame(log_reg_report).T
 
     log_reg_evaluation_col.dataframe(df_report, use_container_width=True)
-    lo_reg_comment_col.text('The model achieves 82.0% accuracy on an imbalanced set (1,036 non-churn vs 373 churn). ' \
+    lo_reg_comment_col.markdown('The model achieves 82.0% accuracy on an imbalanced set (1,036 non-churn vs 373 churn). ' \
     'It identifies non-churners reliably (precision 86.1%, recall 90.2%). For churners, precision is 68.5% and recall '
     'is 59.5% (F1 63.7%), meaning ~4/10 churners are missed and ~1/3 churn flags are false alarms at this cutoff.')
 
@@ -518,7 +518,7 @@ if model_name == 'Logistic Regression':
     roc_line.update_layout(xaxis_range=[0,1], yaxis_range=[0,1])
 
     st.plotly_chart(roc_line, use_container_width=True)
-    st.text('The model shows strong ranking performance with AUC = 0.862, meaning ' \
+    st.markdown('The model shows strong ranking performance with AUC = 0.862, meaning ' \
     'it can reliably score churners above non-churners. The blue curve sits well above the dashed ' \
     'random baseline. Around FPR ≈ 10%, the TPR is ~60–65%; at FPR ≈ 20%, TPR exceeds ~75%, indicating ' \
     'you can capture many churners with relatively few false alarms. The “knee” of the curve is roughly '
@@ -588,7 +588,7 @@ if model_name == 'Logistic Regression':
     )
 
     tab_local.plotly_chart(fig_shap_customer, use_container_width=True)
-    tab_local.text('Each bar shows how a feature pushed this customer’s prediction: right = ' \
+    tab_local.markdown('Each bar shows how a feature pushed this customer’s prediction: right = ' \
     'toward churn, left = toward non-churn. The biggest push toward churn comes from tenure '
     '(likely short tenure) and MonthlyCharges (relatively high). Smaller pushes come from factors like ' \
     'PhoneService and Electronic check. The main factors reducing churn risk for this customer are ' \
@@ -596,7 +596,7 @@ if model_name == 'Logistic Regression':
     'strength of influence; the signed contributions sum (with the baseline) to this customer’s final churn probability.')
 
     tab_local.dataframe(per_feature_contrib.head(12), use_container_width=True)
-    tab_local.text('Each row shows how a feature moved this customer’s prediction: positive = pushes ' \
+    tab_local.markdown('Each row shows how a feature moved this customer’s prediction: positive = pushes ' \
     'toward churn, negative = pushes toward non-churn. The biggest pushes toward churn are tenure (+1.68) '
     'and MonthlyCharges (+0.85), with smaller pushes from PhoneService, Contract_Two year, PaymentMethod_Electronic ' \
     'check, InternetService_No, and Contract_One year. The main factors reducing churn risk are InternetService_Fiber ' \
@@ -630,12 +630,12 @@ if model_name == 'Logistic Regression':
     )
 
     tab_lime.plotly_chart(fig_lime_customer, use_container_width=True)
-    tab_lime.text('Each bar shows a simple rule near this customer and its local weight: right = pushes prediction toward ' \
+    tab_lime.markdown('Each bar shows a simple rule near this customer and its local weight: right = pushes prediction toward ' \
     'churn, left = pushes away. Here, rules like tenure <= -0.95, MonthlyCharges <= -0.96, Contract_Two year <= -0.56, '
     'and InternetService_No <= -0.53 increase churn risk for this customer, while TotalCharges <= -0.83, InternetService_Fiber ' \
     'optic <= -0.89, and several others reduce it.')
     tab_lime.dataframe(lime_table, use_container_width=True)
-    tab_lime.text('Each rule shows a simple condition near this customer and its local weight: positive = pushes prediction' \
+    tab_lime.markdown('Each rule shows a simple condition near this customer and its local weight: positive = pushes prediction' \
     ' toward churn, negative = pushes toward non-churn. \nBiggest risk drivers here: very short tenure (tenure ≤ −0.95), ' \
     'below-average monthly charges (MonthlyCharges ≤ −0.96), not on a 2-year contract (Contract_Two year ≤ −0.56), and having ' \
     'internet service (InternetService_No ≤ −0.53 ⇒ not “No internet”).\nRisk-reducing factors: lower total charges (TotalCharges ≤ −0.83),' \
@@ -667,7 +667,7 @@ elif model_name == 'Random Forest':
     df_report = pd.DataFrame(rand_forest_report).T
 
     rand_forest_evaluation_col.dataframe(df_report, use_container_width=True)
-    rand_forest_comment_col.text('The model reaches 79.4% accuracy on an imbalanced set (1,036 non-churn vs 373 churn). ' \
+    rand_forest_comment_col.markdown('The model reaches 79.4% accuracy on an imbalanced set (1,036 non-churn vs 373 churn). ' \
     'It identifies non-churners well (precision 82.5%, recall 91.3%). For churners, precision is 65.8% and recall is ' \
     '46.4% (F1 54.4%), meaning about 53.6% of churners are missed at this cutoff.')
 
@@ -698,7 +698,7 @@ elif model_name == 'Random Forest':
     roc_line.update_layout(xaxis_range=[0,1], yaxis_range=[0,1])
 
     st.plotly_chart(roc_line, use_container_width=True)
-    st.text('The model shows good ranking ability with AUC = 0.843, well above the dashed ' \
+    st.markdown('The model shows good ranking ability with AUC = 0.843, well above the dashed ' \
             'random baseline. The curve rises quickly at low false-positive rates: around FPR ≈ 10% the ' \
             'TPR (recall) is roughly ~60%, and by FPR ≈ 20% it’s around ~70–75%.')
 
@@ -741,7 +741,7 @@ elif model_name == 'Random Forest':
             labels={"avg_abs_contribution":"Average |contribution|", "feature":"Feature"}
         )
         sub_global.plotly_chart(fig, use_container_width=True)
-        sub_global.text('This chart ranks features by how much they influence churn predictions on average '
+        sub_global.markdown('This chart ranks features by how much they influence churn predictions on average '
         '(magnitude only). Tenure is the strongest driver, followed by Internet service type (e.g., Fiber optic), ' \
         'contract length (especially Two year), Total/Monthly charges, and Payment method (Electronic check). ' \
         'Billing options (PaperlessBilling) and service add-ons (OnlineSecurity, TechSupport) also matter.')
@@ -774,14 +774,14 @@ elif model_name == 'Random Forest':
             labels={"shap_value":"Contribution (→ churn + / ← non-churn −)", "feature":"Feature"}
         )
         sub_local.plotly_chart(fig_row, use_container_width=True)
-        sub_local.text('Bars show how each feature pushed this customer’s prediction: right = toward churn, ' \
+        sub_local.markdown('Bars show how each feature pushed this customer’s prediction: right = toward churn, ' \
         'left = toward non-churn. The largest pushes toward churn come from tenure and TotalCharges, with smaller ' \
         'positive effects from PaymentMethod_Electronic check, PhoneService, and some contract/internet indicators. ' \
         'The main factor reducing risk is InternetService_Fiber optic (left bar), with small reductions from SeniorCitizen '
         'and PaperlessBilling. Bar length = strength of influence; the signed contributions combine (with the baseline) to ' \
         'produce this customer’s final churn probability.')
         sub_local.dataframe(contrib_df.head(12), use_container_width=True)
-        sub_local.text('Positive SHAP values push this prediction toward churn; negative values push away. For this ' \
+        sub_local.markdown('Positive SHAP values push this prediction toward churn; negative values push away. For this ' \
                        'customer, the largest push toward churn comes from TotalCharges (+0.137).Smaller pushes come ' \
                        'from Electronic check (+0.054), PhoneService (+0.043), Contract_Two year (+0.043), ' \
                        'InternetService_No (+0.035), plus OnlineBackup/OnlineSecurity and Contract_One year (small positives). ' \
@@ -816,14 +816,14 @@ elif model_name == 'Random Forest':
         )
 
         tab_lime.plotly_chart(fig_lime_customer, use_container_width=True)
-        tab_lime.text('Bars show simple rules near this customer and their local weight: right = pushes toward churn, ' \
+        tab_lime.markdown('Bars show simple rules near this customer and their local weight: right = pushes toward churn, ' \
         'left = pushes toward non-churn.\nBiggest risk drivers: not on a 2-year contract (Contract_Two year ≤ −0.56) '
         'and short tenure (tenure ≤ −0.95).\nOther factors nudging risk up: low total charges (TotalCharges ≤ −0.83), ' \
         'not on a 1-year contract, has internet service (InternetService_No ≤ −0.53 ⇒ not “no internet”), electronic check ' \
         'payment, and signals consistent with no TechSupport/OnlineSecurity.\nRisk reducer: not on fiber optic '
         '(InternetService_Fiber optic ≤ −0.89) strongly pulls the prediction toward non-churn; StreamingMovies also reduces risk slightly.')
         tab_lime.dataframe(lime_table, use_container_width=True)
-        tab_lime.text('Each rule is a simple condition near this customer; the weight shows its local effect (positive → pushes ' \
+        tab_lime.markdown('Each rule is a simple condition near this customer; the weight shows its local effect (positive → pushes ' \
         'toward churn, negative → pushes toward non-churn).\nBiggest risk drivers: not on a 2-year contract '
         'and very short tenure (both strong positives).\nOther risk-increasing signals: lower total charges '
         '(early lifecycle), not on a 1-year contract, has internet service (vs. “no internet”), pays by electronic ' \
