@@ -10,8 +10,7 @@ import shap
 import numpy as np
 from lime.lime_tabular import LimeTabularExplainer
 
-st.set_page_config(page_title="Churn Dashboard", layout="wide")
-#st.title('Churn Prediction Dashboard')
+st.title('Churn Prediction Dashboard')
 
 # Get the dataset
 telco_data = pd.read_csv('telco_data.csv')
