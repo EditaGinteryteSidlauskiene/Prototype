@@ -94,16 +94,8 @@ if selected_anaysis_type == 'Numeric Drivers of Churn':
 
     tenure_box_col.plotly_chart(tenure_box)
 
-    tenure_note_col.markdown('''Customers who stayed longer with the company are less likely to churn. ' \
-        'The boxplot shows that churners typically had shorter tenures compared to those who remain.''')
-
-    # tenure_note_col.text_area(
-    #     label='Note',
-    #     label_visibility='collapsed',
-    #     value='Customers who stayed longer with the company are less likely to churn. ' \
-    #     'The boxplot shows that churners typically had shorter tenures compared to those who remain.', 
-    #     height=260, 
-    #     disabled=True)
+    tenure_note_col.markdown('Customers who stayed longer with the company are less likely to churn. ' \
+        'The boxplot shows that churners typically had shorter tenures compared to those who remain.')
 
     # Add histogram for key numeric 2
     monthly_charges_col, monthly_charges_note_col = st.columns([5, 2])
@@ -125,7 +117,7 @@ if selected_anaysis_type == 'Numeric Drivers of Churn':
 
     monthly_charges_col.plotly_chart(monthly_charges_hist)
 
-    monthly_charges_note_col.text('Higher monthly charges are associated with a greater likelihood of churn. ' \
+    monthly_charges_note_col.markdown('Higher monthly charges are associated with a greater likelihood of churn. ' \
     'Churned customers are more concentrated in the higher charge ranges, while non-churners are more evenly ' \
     'distributed across the lower ranges.')
 
